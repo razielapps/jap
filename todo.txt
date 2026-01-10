@@ -1,0 +1,2 @@
+- Convert to multiple-user portfolio system
+- Improve UI/UX on frontend
