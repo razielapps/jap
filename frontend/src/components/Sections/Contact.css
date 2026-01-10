@@ -1,0 +1,56 @@
+/* src/components/Sections/Contact.css */
+.contact-section {
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-card {
+  display: block;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.contact-card:hover {
+  border-color: #4299e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card.primary-contact {
+  border-color: #4299e1;
+  background: #ebf8ff;
+}
+
+.contact-platform {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-icon {
+  font-size: 2rem;
+}
+
+.contact-platform-name {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #2d3748;
+}
+
+.contact-username {
+  margin: 0;
+  color: #718096;
+  font-size: 0.95rem;
+}

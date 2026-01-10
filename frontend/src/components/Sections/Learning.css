@@ -1,0 +1,88 @@
+/* src/components/Sections/Learning.css */
+.learning-section {
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.learning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.learning-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.learning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.learning-name {
+  font-size: 1.3rem;
+  color: #2d3748;
+  margin: 0;
+}
+
+.learning-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-text {
+  font-weight: 600;
+  color: #2d3748;
+  min-width: 40px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 8px;
+  background: #edf2f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #48bb78;
+  transition: width 0.3s ease;
+}
+
+.learning-dates {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.date-item {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.date-item strong {
+  color: #2d3748;
+}
+
+.learning-why h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.learning-why p {
+  margin: 0;
+  line-height: 1.5;
+  color: #718096;
+}

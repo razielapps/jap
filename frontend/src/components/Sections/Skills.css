@@ -1,0 +1,81 @@
+/* src/components/Sections/Skills.css */
+.skills-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skills-category {
+  margin-bottom: 2.5rem;
+}
+
+.skills-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #4a5568;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.skill-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.skill-experience {
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.skill-progress {
+  position: relative;
+  height: 20px;
+  background: #edf2f7;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: #4299e1;
+  transition: width 0.3s ease;
+}
+
+.skill-progress-text {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.skill-certificates {
+  font-size: 0.85rem;
+  color: #718096;
+}

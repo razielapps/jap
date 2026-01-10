@@ -1,0 +1,15 @@
+
+@import 'tailwindcss';
+
+/* Custom base styles if needed */
+@layer base {
+  /* Add custom base styles here */
+}
+
+@layer components {
+  /* Add custom component classes here */
+}
+
+@layer utilities {
+  /* Add custom utility classes here */
+}

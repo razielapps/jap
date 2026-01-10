@@ -1,0 +1,65 @@
+/* src/components/Sections/Specializations.css */
+.specializations-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2d3748;
+  text-align: center;
+}
+
+.specializations-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.specialization-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.specialization-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+.experience {
+  font-size: 1rem;
+  color: #718096;
+}
+
+.specialization-detail {
+  margin-bottom: 1rem;
+}
+
+.specialization-detail:last-child {
+  margin-bottom: 0;
+}
+
+.specialization-detail h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  background: #edf2f7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,41 @@
+/* src/components/Sections/Traits.css */
+.traits-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.traits-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.trait-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.trait-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.trait-icon {
+  font-size: 1.5rem;
+}
+
+.trait-name {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #2d3748;
+}
+
+.trait-comment {
+  margin: 0;
+  line-height: 1.5;
+  color: #4a5568;
+}

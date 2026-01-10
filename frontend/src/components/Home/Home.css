@@ -1,0 +1,18 @@
+/* src/components/Home/Home.css */
+.portfolio-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-content {
+  flex: 1;
+}
+
+.portfolio-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  color: #718096;
+  font-size: 0.9rem;
+}
