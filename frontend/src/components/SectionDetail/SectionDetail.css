@@ -729,3 +729,39 @@
     margin-top: 0.5rem;
   }
 }
+
+/* Add to SectionDetail.css */
+.section-detail-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-detail-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* Update back button position if needed */
+.back-button {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Add to SectionDetail.css */
+.section-detail-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-detail-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}

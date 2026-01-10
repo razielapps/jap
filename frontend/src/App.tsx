@@ -1,4 +1,4 @@
-// src/App.tsx
+// src/App.tsx - UPDATED
 import React, { useState } from 'react';
 import { Home } from './components/Home/Home';
 import { SectionDetail } from './components/SectionDetail/SectionDetail';
@@ -38,7 +38,8 @@ function App() {
         <SectionDetail 
           section={activeSection} 
           portfolio={portfolio} 
-          onClose={() => setActiveSection(null)} 
+          onClose={() => setActiveSection(null)}
+          onSectionClick={setActiveSection} // Add this
         />
       </div>
     );

@@ -1,19 +1,35 @@
 // src/components/SectionDetail/SectionDetail.tsx
 import React from 'react';
 import { ME } from '../../lib/api';
+import { Navigation } from '../Navigation';
 import './SectionDetail.css';
 
 interface SectionDetailProps {
   section: string;
   portfolio: ME;
   onClose: () => void;
+  onSectionClick: (section: string) => void; // Added this prop
 }
 
 export const SectionDetail: React.FC<SectionDetailProps> = ({ 
   section, 
   portfolio, 
-  onClose 
+  onClose,
+  onSectionClick // Added this
 }) => {
+  const sections = [
+    { id: 'intro', name: 'Intro' },
+    { id: 'specializations', name: 'Specializations' },
+    { id: 'skills', name: 'Skills' },
+    { id: 'certifications', name: 'Certifications' },
+    { id: 'interests', name: 'Interests' },
+    { id: 'learning', name: 'Learning' },
+    { id: 'blog', name: 'Blog' },
+    { id: 'traits', name: 'Traits' },
+    { id: 'projects', name: 'Projects' },
+    { id: 'contact', name: 'Contact' },
+  ];
+
   const getPlatformIcon = (platform: string) => {
     const icons: Record<string, string> = {
       'GitHub': '🐙',
@@ -434,11 +450,14 @@ export const SectionDetail: React.FC<SectionDetailProps> = ({
   };
 
   return (
-    <div className="section-detail-container">
-      <button className="back-button" onClick={onClose}>
-        ← Back to Portfolio
-      </button>
-      {renderContent()}
+    <div className="section-detail-page">
+      <Navigation sections={sections} onSectionClick={onSectionClick} />
+      <div className="section-detail-container">
+        <button className="back-button" onClick={onClose}>
+          ← Back to Portfolio
+        </button>
+        {renderContent()}
+      </div>
     </div>
   );
 };

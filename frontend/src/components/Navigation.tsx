@@ -1,5 +1,5 @@
-// src/components/Navigation.tsx
-import React from 'react';
+// Update the Navigation.tsx with useEffect for body scroll
+import React, { useState, useEffect } from 'react';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -7,24 +7,91 @@ interface NavigationProps {
   onSectionClick: (section: string) => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ sections, onSectionClick }) => (
-  <nav className="navigation">
-    <div className="nav-container">
-      <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        JAP
-      </span>
-      <ul className="nav-links">
-        {sections.map((section) => (
-          <li key={section.id}>
+export const Navigation: React.FC<NavigationProps> = ({ sections, onSectionClick }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Handle body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMenuOpen]);
+
+  const handleSectionClick = (sectionId: string) => {
+    onSectionClick(sectionId);
+    setIsMenuOpen(false); // Close menu on mobile after click
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <nav className="navigation">
+      <div className="nav-container">
+        {/* Desktop Navigation */}
+        <div className="nav-desktop">
+          <div className="nav-links-container">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => handleSectionClick(section.id)}
+                className="nav-link"
+              >
+                {section.name}
+              </button>
+            ))}
+          </div>
+          <div className="nav-brand">
+            <span className="nav-logo">JAP</span>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Header */}
+        <div className="nav-mobile-header">
+          <span className="nav-logo-mobile">JAP</span>
+          <button 
+            className="menu-toggle" 
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isMenuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Menu (Full Screen Overlay) */}
+        <div className={`nav-mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-header">
+            <span className="mobile-menu-logo">JAP</span>
             <button 
-              onClick={() => onSectionClick(section.id)}
-              className="nav-link"
+              className="menu-close" 
+              onClick={toggleMenu}
+              aria-label="Close menu"
             >
-              {section.name}
+              ✕
             </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
-);
+          </div>
+          
+          <div className="mobile-menu-links">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => handleSectionClick(section.id)}
+                className="mobile-nav-link"
+              >
+                {section.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
