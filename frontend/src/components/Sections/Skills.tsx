@@ -1,4 +1,4 @@
-// src/components/Sections/Skills.tsx
+// src/components/Sections/Skills.tsx - UPDATED
 import React from 'react';
 import { Skill } from '../../lib/api';
 import './Skills.css';
@@ -40,26 +40,37 @@ export const Skills: React.FC<SkillsProps> = ({ skills, onViewDetail }) => {
             {skillsByCategory[category]
               .sort((a, b) => b.proficiency - a.proficiency)
               .slice(0, 4)
-              .map((skill) => (
-              <div key={skill.id} className="skill-item">
-                <div className="skill-header">
-                  <span className="skill-name">{skill.skill_name}</span>
-                  <span className="skill-experience">{skill.skill_commitment_age} years</span>
-                </div>
-                <div className="skill-progress">
-                  <div 
-                    className="skill-progress-bar" 
-                    style={{ width: `${skill.proficiency}%` }}
-                  ></div>
-                  <span className="skill-progress-text">{skill.proficiency}%</span>
-                </div>
-                {skill.skill_certificates && (
-                  <div className="skill-certificates">
-                    <small className="truncate-text">Certifications: {skill.skill_certificates}</small>
+              .map((skill, index) => (
+                <article 
+                  key={skill.id} 
+                  className="skill-preview-card"
+                  style={{ '--item-index': index } as React.CSSProperties}
+                >
+                  <div className="skill-preview-header">
+                    <span className="skill-preview-name">{skill.skill_name}</span>
+                    <span className="skill-preview-experience">{skill.skill_commitment_age} years</span>
                   </div>
-                )}
-              </div>
-            ))}
+                  
+                  <div className="skill-preview-progress">
+                    <div className="skill-preview-progress-text">
+                      <span>Proficiency</span>
+                      <span>{skill.proficiency}%</span>
+                    </div>
+                    <div className="skill-preview-progress-bar-container">
+                      <div 
+                        className="skill-preview-progress-bar" 
+                        style={{ width: `${skill.proficiency}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  
+                  {skill.skill_certificates && (
+                    <div className="skill-preview-certificates">
+                      <small>Certifications: {skill.skill_certificates}</small>
+                    </div>
+                  )}
+                </article>
+              ))}
           </div>
         </div>
       ))}
@@ -68,8 +79,12 @@ export const Skills: React.FC<SkillsProps> = ({ skills, onViewDetail }) => {
         <div className="category-preview">
           <h3 className="category-title">More Categories</h3>
           <div className="categories-list">
-            {orderedCategories.slice(2).map((category) => (
-              <div key={category} className="category-preview-item">
+            {orderedCategories.slice(2).map((category, index) => (
+              <div 
+                key={category} 
+                className="category-preview-item"
+                style={{ '--item-index': index } as React.CSSProperties}
+              >
                 <span className="category-name">{category}</span>
                 <span className="category-count">{skillsByCategory[category].length} skills</span>
               </div>

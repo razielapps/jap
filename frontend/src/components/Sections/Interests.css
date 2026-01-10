@@ -1,69 +1,113 @@
-/* Add to src/components/Sections/Interests.css */
-.section-header {
-  display: flex;
-  justify-content: space-between;
+/* src/components/Sections/Interests.css - UPDATED */
+@import './SectionCommon.css';
+
+.interests-section {
+  composes: section-common;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.interest-preview-card {
+  composes: preview-card;
+  position: relative;
+  padding: var(--spacing-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.interest-preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.interest-preview-card:hover::before {
+  transform: scaleX(1);
+}
+
+.interest-preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.interest-preview-name {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--spacing-xs) 0;
+  font-weight: 600;
+}
+
+.interest-preview-meta {
+  margin-bottom: var(--spacing-md);
+}
+
+.interest-preview-since {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.view-detail-button {
-  padding: 0.5rem 1rem;
-  background: #d69e2e;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  gap: var(--spacing-xs);
   font-size: 0.9rem;
-  transition: background-color 0.2s;
+  color: var(--color-secondary);
+  background: var(--color-accent);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
 }
 
-.view-detail-button:hover {
-  background: #b7791f;
+.interest-preview-since::before {
+  content: '📅';
 }
 
-.section-footer {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.view-more-button {
-  background: none;
-  border: none;
-  color: #d69e2e;
-  cursor: pointer;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.view-more-button:hover {
-  background: #fefcbf;
-  text-decoration: underline;
-}
-
-.interest-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.interest-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.interest-description {
+.interest-preview-description {
   margin: 0;
-  line-height: 1.5;
-  color: #4a5568;
+  line-height: 1.6;
+  color: var(--color-gray-dark);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.95rem;
 }
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .interests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .interests-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Animation */
+.interest-preview-card {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

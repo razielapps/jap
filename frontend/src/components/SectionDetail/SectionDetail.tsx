@@ -1,4 +1,4 @@
-// src/components/SectionDetail/SectionDetail.tsx
+// src/components/SectionDetail/SectionDetail.tsx - UPDATED
 import React from 'react';
 import { ME } from '../../lib/api';
 import { Navigation } from '../Navigation';
@@ -75,9 +75,9 @@ export const SectionDetail: React.FC<SectionDetailProps> = ({
         return (
           <div className="detail-content">
             <h1 className="detail-title">Specializations</h1>
-            <div className="specializations-detail">
+            <div className="specializations-grid"> {/* Changed from specializations-detail */}
               {portfolio.specializations.map(spec => (
-                <div key={spec.id} className="spec-detail-card">
+                <div key={spec.id} className="spec-card"> {/* Changed from spec-detail-card */}
                   <div className="spec-header">
                     <h2>{spec.name}</h2>
                     <span className="years-badge">{spec.specialization_commitment_age} years</span>
@@ -158,7 +158,7 @@ export const SectionDetail: React.FC<SectionDetailProps> = ({
         return (
           <div className="detail-content">
             <h1 className="detail-title">Education & Certifications</h1>
-            <div className="certifications-detail">
+            <div className="certifications-detail"> {/* This needs CSS */}
               {portfolio.certifications.map(cert => (
                 <div key={cert.id} className="certification-detail-card">
                   <div className="cert-header">
@@ -451,10 +451,8 @@ export const SectionDetail: React.FC<SectionDetailProps> = ({
 
   return (
     <div className="section-detail-app">
-      {/* Navigation is OUTSIDE the content container - flush edges */}
       <Navigation sections={sections} onSectionClick={onSectionClick} />
       
-      {/* Content container with padding */}
       <div className="section-detail-container">
         <button className="back-button" onClick={onClose}>
           ← Back to Portfolio

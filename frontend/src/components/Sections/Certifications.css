@@ -1,50 +1,90 @@
-/* Add to src/components/Sections/Certifications.css */
-.section-header {
+/* src/components/Sections/Certifications.css - UPDATED */
+@import './SectionCommon.css';
+
+.certifications-section {
+  composes: section-common;
+}
+
+.certifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.certification-preview-card {
+  composes: preview-card;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.certification-preview-card:hover {
+  border-left-color: var(--color-secondary);
+  transform: translateX(4px);
+}
+
+.certification-preview-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--spacing-sm);
 }
 
-.view-detail-button {
-  padding: 0.5rem 1rem;
-  background: #4299e1;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.certification-preview-name {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.certification-preview-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-xs);
+  text-align: right;
+}
+
+.date-earned,
+.date-started {
   font-size: 0.9rem;
-  transition: background-color 0.2s;
+  color: var(--color-gray);
+  white-space: nowrap;
 }
 
-.view-detail-button:hover {
-  background: #3182ce;
+.date-earned {
+  font-weight: 600;
+  color: var(--color-secondary);
 }
 
-.section-footer {
-  margin-top: 2rem;
-  text-align: center;
+.certification-preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
-.view-more-button {
-  background: none;
-  border: none;
-  color: #4299e1;
-  cursor: pointer;
+.certification-preview-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.certification-preview-detail h4 {
   font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.2s;
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 600;
 }
 
-.view-more-button:hover {
-  background: #f7fafc;
-  text-decoration: underline;
-}
-
-.truncate-text {
+.certification-preview-detail p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-gray-dark);
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -52,15 +92,73 @@
   text-overflow: ellipsis;
 }
 
-.certification-item {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+.certification-preview-credential {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-gray-light);
 }
 
-.certification-item:hover {
+.certification-preview-link {
+  composes: view-detail-button;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: var(--spacing-md);
+}
+
+.certification-preview-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .certification-preview-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .certification-preview-dates {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .certifications-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Animation */
+.certification-preview-card {
+  animation: slideIn 0.6s ease forwards;
+  opacity: 0;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

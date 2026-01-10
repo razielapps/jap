@@ -1,4 +1,4 @@
-// src/components/Sections/Certifications.tsx
+// src/components/Sections/Certifications.tsx - UPDATED
 import React from 'react';
 import { Certification } from '../../lib/api';
 import './Certifications.css';
@@ -20,11 +20,13 @@ export const Certifications: React.FC<CertificationsProps> = ({ certifications, 
     </div>
     
     <div className="certifications-list">
-      {certifications.slice(0, 2).map((cert) => (
-        <div key={cert.id} className="certification-item">
-          <div className="certification-header">
-            <h3 className="certification-name">{cert.certification_name}</h3>
-            <div className="certification-dates">
+      {certifications.slice(0, 4).map((cert, index) => (
+        <article key={cert.id} className="certification-preview-card" 
+          style={{ '--item-index': index } as React.CSSProperties}>
+          
+          <div className="certification-preview-header">
+            <h3 className="certification-preview-name">{cert.certification_name}</h3>
+            <div className="certification-preview-dates">
               <span className="date-earned">Earned: {cert.month_year_earned}</span>
               {cert.month_year_started !== cert.month_year_earned && (
                 <span className="date-started">Started: {cert.month_year_started}</span>
@@ -32,28 +34,28 @@ export const Certifications: React.FC<CertificationsProps> = ({ certifications, 
             </div>
           </div>
           
-          <div className="certification-content">
-            <div className="certification-detail">
+          <div className="certification-preview-content">
+            <div className="certification-preview-detail">
               <h4>Skills Acquired</h4>
-              <p className="truncate-text">{cert.skills_acquired}</p>
+              <p>{cert.skills_acquired}</p>
             </div>
             
             {cert.projects_done && (
-              <div className="certification-detail">
-                <h4>Projects</h4>
-                <p className="truncate-text">{cert.projects_done}</p>
+              <div className="certification-preview-detail">
+                <h4>Projects Completed</h4>
+                <p>{cert.projects_done}</p>
               </div>
             )}
             
             {cert.comment && (
-              <div className="certification-detail">
-                <h4>Comment</h4>
-                <p className="truncate-text">{cert.comment}</p>
+              <div className="certification-preview-detail">
+                <h4>Notes</h4>
+                <p>{cert.comment}</p>
               </div>
             )}
             
             {cert.credential_id && (
-              <div className="certification-credential">
+              <div className="certification-preview-credential">
                 <small>Credential ID: {cert.credential_id}</small>
               </div>
             )}
@@ -63,17 +65,17 @@ export const Certifications: React.FC<CertificationsProps> = ({ certifications, 
                 href={cert.credential_url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="credential-link"
+                className="certification-preview-link"
               >
-                Verify Credential
+                Verify Credential →
               </a>
             )}
           </div>
-        </div>
+        </article>
       ))}
     </div>
     
-    {certifications.length > 2 && onViewDetail && (
+    {certifications.length > 4 && onViewDetail && (
       <div className="section-footer">
         <button onClick={onViewDetail} className="view-more-button">
           View all {certifications.length} certifications →

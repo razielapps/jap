@@ -1,10 +1,10 @@
-// src/components/Sections/Learning.tsx
+// src/components/Sections/Learning.tsx - UPDATED
 import React from 'react';
-import { Learning } from '../../lib/api';
+import { Learning as LearningType } from '../../lib/api';
 import './Learning.css';
 
 interface LearningProps {
-  learnings: Learning[];
+  learnings: LearningType[];
   onViewDetail?: () => void;
 }
 
@@ -23,12 +23,18 @@ export const Learning: React.FC<LearningProps> = ({ learnings, onViewDetail }) =
       </div>
       
       <div className="learning-list">
-        {activeLearnings.slice(0, 2).map((learning) => (
-          <div key={learning.id} className="learning-item">
-            <div className="learning-header">
-              <h3 className="learning-name">{learning.name}</h3>
-              <div className="learning-progress">
-                <span className="progress-text">{learning.progress}%</span>
+        {activeLearnings.slice(0, 4).map((learning, index) => (
+          <article 
+            key={learning.id} 
+            className="learning-preview-card"
+            data-status={learning.progress < 100 ? 'In Progress' : 'Completed'}
+            style={{ '--item-index': index } as React.CSSProperties}
+          >
+            <div className="learning-preview-header">
+              <h3 className="learning-preview-name">{learning.name}</h3>
+              
+              <div className="learning-preview-progress">
+                <span className="progress-value">{learning.progress}%</span>
                 <div className="progress-bar">
                   <div 
                     className="progress-fill" 
@@ -38,29 +44,29 @@ export const Learning: React.FC<LearningProps> = ({ learnings, onViewDetail }) =
               </div>
             </div>
             
-            <div className="learning-details">
-              <div className="learning-dates">
+            <div className="learning-preview-details">
+              <div className="learning-preview-dates">
                 <span className="date-item">
-                  Started: <strong>{learning.since_when}</strong>
+                  📅 Started: <strong>{learning.since_when}</strong>
                 </span>
                 <span className="date-item">
-                  Expected Finish: <strong>{learning.expected_finish_time}</strong>
+                  🎯 Expected Finish: <strong>{learning.expected_finish_time}</strong>
                 </span>
               </div>
               
-              <div className="learning-why">
+              <div className="learning-preview-why">
                 <h4>Why I'm Learning This</h4>
-                <p className="truncate-text">{learning.why}</p>
+                <p>{learning.why}</p>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
       
-      {(activeLearnings.length > 2 || learnings.length > activeLearnings.length) && onViewDetail && (
+      {(activeLearnings.length > 4 || learnings.length > activeLearnings.length) && onViewDetail && (
         <div className="section-footer">
           <button onClick={onViewDetail} className="view-more-button">
-            {activeLearnings.length > 2 ? `View all ${activeLearnings.length} active learnings` : 'View completed learnings'} →
+            {activeLearnings.length > 4 ? `View all ${activeLearnings.length} active learnings` : 'View completed learnings'} →
           </button>
         </div>
       )}

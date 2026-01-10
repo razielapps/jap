@@ -1,4 +1,4 @@
-// src/components/Sections/Intro.tsx
+// src/components/Sections/Intro.tsx - UPDATED
 import React from 'react';
 import { ME } from '../../lib/api';
 import './Intro.css';
@@ -19,13 +19,15 @@ export const Intro: React.FC<IntroProps> = ({ data, onViewDetail }) => (
           </button>
         )}
       </div>
+      
       <div className="intro-bio">
         {data.bio.split('\n').slice(0, 3).map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
+        
         {onViewDetail && (
           <button onClick={onViewDetail} className="read-more-button">
-            Read more about me...
+            Read more about me
           </button>
         )}
       </div>

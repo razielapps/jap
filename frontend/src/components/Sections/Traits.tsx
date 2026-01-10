@@ -1,4 +1,4 @@
-// src/components/Sections/Traits.tsx
+// src/components/Sections/Traits.tsx - UPDATED
 import React from 'react';
 import { ProfessionalTrait } from '../../lib/api';
 import './Traits.css';
@@ -20,14 +20,18 @@ export const Traits: React.FC<TraitsProps> = ({ traits, onViewDetail }) => (
     </div>
     
     <div className="traits-grid">
-      {traits.slice(0, 4).map((trait) => (
-        <div key={trait.id} className="trait-card">
-          <div className="trait-header">
-            {trait.icon && <span className="trait-icon">{trait.icon}</span>}
-            <h3 className="trait-name">{trait.trait_name}</h3>
+      {traits.slice(0, 4).map((trait, index) => (
+        <article 
+          key={trait.id} 
+          className="trait-preview-card"
+          style={{ '--item-index': index } as React.CSSProperties}
+        >
+          <div className="trait-preview-header">
+            {trait.icon && <span className="trait-preview-icon">{trait.icon}</span>}
+            <h3 className="trait-preview-name">{trait.trait_name}</h3>
           </div>
-          <p className="trait-comment truncate-text">{trait.comment}</p>
-        </div>
+          <p className="trait-preview-comment">{trait.comment}</p>
+        </article>
       ))}
     </div>
     
@@ -36,11 +40,16 @@ export const Traits: React.FC<TraitsProps> = ({ traits, onViewDetail }) => (
         <div className="traits-preview">
           <h4>Additional Traits</h4>
           <div className="additional-traits">
-            {traits.slice(4).map((trait) => (
-              <div key={trait.id} className="additional-trait">
+            {traits.slice(4, 8).map((trait, index) => (
+              <button
+                key={trait.id}
+                onClick={onViewDetail}
+                className="additional-trait"
+                style={{ '--item-index': index + 4 } as React.CSSProperties}
+              >
                 {trait.icon && <span className="trait-icon-small">{trait.icon}</span>}
                 <span className="trait-name-small">{trait.trait_name}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>

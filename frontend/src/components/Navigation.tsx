@@ -1,4 +1,4 @@
-// Update the Navigation.tsx with useEffect for body scroll
+// src/components/Navigation.tsx - UPDATED WITH MOBILE MENU FOOTER
 import React, { useState, useEffect } from 'react';
 import './Navigation.css';
 
@@ -89,6 +89,14 @@ export const Navigation: React.FC<NavigationProps> = ({ sections, onSectionClick
                 {section.name}
               </button>
             ))}
+          </div>
+          
+          {/* Mobile Menu Footer */}
+          <div className="mobile-menu-footer">
+            <p>Scroll for more sections</p>
+            <p style={{ fontSize: '0.8rem', opacity: 0.6, marginTop: '0.25rem' }}>
+              Tap any section to view details
+            </p>
           </div>
         </div>
       </div>
