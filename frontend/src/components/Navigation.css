@@ -1,4 +1,4 @@
-/* src/components/Navigation.css - UPDATED */
+/* src/components/Navigation.css */
 .navigation {
   position: sticky;
   top: 0;
@@ -11,18 +11,16 @@
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  /* Remove left/right padding for flush header */
-  padding: 0;
+  padding: 0 1rem;
 }
 
 /* Desktop Navigation */
 .nav-desktop {
-  display: none; /* Hidden on mobile */
+  display: none;
+  /* Hidden on mobile */
   align-items: center;
   justify-content: space-between;
-  /* Remove top padding for flush header */
-  padding: 0 2rem;
-  height: 70px;
+  padding: 1rem 0;
 }
 
 .nav-links-container {
@@ -84,9 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Remove top padding for flush header */
-  padding: 0 1rem;
-  height: 70px;
+  padding: 1rem 0;
 }
 
 .nav-logo-mobile {
@@ -136,11 +132,9 @@
 
 .mobile-menu-header {
   display: flex;
-  align-items: center;
+  align-items: center !important;
   justify-content: space-between;
-  /* Remove top padding for flush header */
-  padding: 0 1rem;
-  height: 70px;
+  padding: 1rem;
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -174,31 +168,31 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align links */
-  justify-content: center; /* Center vertically */
   padding: 2rem 1rem;
   overflow-y: auto;
+  align-items: center;
+  
+  width: 100%;
 }
 
 .mobile-nav-link {
   background: none;
   border: none;
   color: #2d3748;
-  font-size: 1.25rem; /* Slightly larger for mobile */
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   padding: 1rem 0;
-  text-align: center; /* Center text */
-  width: 100%;
-  max-width: 300px; /* Limit width for better readability */
-  border-bottom: 1px solid #f7fafc;
+  text-align: left;
+ 
   transition: all 0.2s;
+  
 }
 
 .mobile-nav-link:hover {
   color: #4299e1;
-  background: #f7fafc;
-  border-radius: 8px;
+  padding-left: 0.5rem;
+  border-bottom:1px solid #e2e8f0;
 }
 
 /* Tablet breakpoint */
@@ -206,11 +200,11 @@
   .nav-mobile-header {
     display: none;
   }
-  
+
   .nav-desktop {
     display: flex;
   }
-  
+
   .nav-links-container {
     gap: clamp(1.5rem, 2vw, 2.5rem);
   }
@@ -219,18 +213,17 @@
 /* Large screen optimizations */
 @media (min-width: 1024px) {
   .nav-container {
-    padding: 0;
+    padding: 0 2rem;
   }
-  
+
   .nav-desktop {
-    padding: 0 3rem;
-    height: 80px;
+    padding: 1.25rem 0;
   }
-  
+
   .nav-link {
     font-size: clamp(0.95rem, 1.1vw, 1.1rem);
   }
-  
+
   .nav-logo {
     font-size: clamp(1.3rem, 1.8vw, 1.8rem);
   }
@@ -238,11 +231,14 @@
 
 /* Extra large screens */
 @media (min-width: 1440px) {
-  .nav-desktop {
-    padding: 0 4rem;
-    height: 85px;
+  .nav-container {
+    padding: 0 3rem;
   }
-  
+
+  .nav-desktop {
+    padding: 1.5rem 0;
+  }
+
   .nav-links-container {
     gap: 3rem;
   }
@@ -250,20 +246,21 @@
 
 /* Small mobile optimization */
 @media (max-width: 360px) {
+
   .nav-logo-mobile,
   .mobile-menu-logo {
     font-size: 1.3rem;
   }
-  
+
   .menu-toggle,
   .menu-close {
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
   }
-  
+
   .mobile-nav-link {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.875rem 0;
   }
 }

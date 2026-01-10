@@ -1,12 +1,20 @@
-/* src/components/Home/Home.css */
-.portfolio-container {
+/* src/components/Home/Home.css - UPDATED */
+.portfolio-app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.portfolio-content {
+.portfolio-container {
   flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.portfolio-content {
+  padding: 2rem 0;
 }
 
 .portfolio-footer {
@@ -15,4 +23,17 @@
   border-top: 1px solid #e2e8f0;
   color: #718096;
   font-size: 0.9rem;
+}
+
+/* Responsive padding */
+@media (min-width: 768px) {
+  .portfolio-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-container {
+    padding: 0 3rem;
+  }
 }

@@ -8,14 +8,14 @@ interface SectionDetailProps {
   section: string;
   portfolio: ME;
   onClose: () => void;
-  onSectionClick: (section: string) => void; // Added this prop
+  onSectionClick: (section: string) => void;
 }
 
 export const SectionDetail: React.FC<SectionDetailProps> = ({ 
   section, 
   portfolio, 
   onClose,
-  onSectionClick // Added this
+  onSectionClick
 }) => {
   const sections = [
     { id: 'intro', name: 'Intro' },
@@ -450,8 +450,11 @@ export const SectionDetail: React.FC<SectionDetailProps> = ({
   };
 
   return (
-    <div className="section-detail-page">
+    <div className="section-detail-app">
+      {/* Navigation is OUTSIDE the content container - flush edges */}
       <Navigation sections={sections} onSectionClick={onSectionClick} />
+      
+      {/* Content container with padding */}
       <div className="section-detail-container">
         <button className="back-button" onClick={onClose}>
           ← Back to Portfolio

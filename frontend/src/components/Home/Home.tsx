@@ -1,4 +1,4 @@
-// src/components/Home/Home.tsx
+// src/components/Home/Home.tsx - UPDATED
 import React from 'react';
 import { ME } from '../../lib/api';
 import { Navigation } from '../Navigation';
@@ -34,55 +34,59 @@ export const Home: React.FC<HomeProps> = ({ portfolio, onSectionClick }) => {
   ];
 
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-app">
+      {/* Navigation is OUTSIDE the content container */}
       <Navigation sections={sections} onSectionClick={onSectionClick} />
       
-      <main className="portfolio-content">
-        <Intro 
-          data={{ name: portfolio.name, bio: portfolio.bio }} 
-          onViewDetail={() => onSectionClick('intro')} 
-        />
-        <Specializations 
-          specializations={portfolio.specializations} 
-          onViewDetail={() => onSectionClick('specializations')} 
-        />
-        <Skills 
-          skills={portfolio.skills} 
-          onViewDetail={() => onSectionClick('skills')} 
-        />
-        <Certifications 
-          certifications={portfolio.certifications} 
-          onViewDetail={() => onSectionClick('certifications')} 
-        />
-        <Interests 
-          interests={portfolio.interests} 
-          onViewDetail={() => onSectionClick('interests')} 
-        />
-        <Learning 
-          learnings={portfolio.learnings} 
-          onViewDetail={() => onSectionClick('learning')} 
-        />
-        <BlogSection 
-          blogs={portfolio.blogs} 
-          onViewDetail={() => onSectionClick('blog')} 
-        />
-        <Traits 
-          traits={portfolio.traits} 
-          onViewDetail={() => onSectionClick('traits')} 
-        />
-        <Projects 
-          projects={portfolio.projects} 
-          onViewDetail={() => onSectionClick('projects')} 
-        />
-        <ContactSection 
-          contacts={portfolio.contacts} 
-          onViewDetail={() => onSectionClick('contact')} 
-        />
-      </main>
+      {/* Content container with padding */}
+      <div className="portfolio-container">
+        <main className="portfolio-content">
+          <Intro 
+            data={{ name: portfolio.name, bio: portfolio.bio }} 
+            onViewDetail={() => onSectionClick('intro')} 
+          />
+          <Specializations 
+            specializations={portfolio.specializations} 
+            onViewDetail={() => onSectionClick('specializations')} 
+          />
+          <Skills 
+            skills={portfolio.skills} 
+            onViewDetail={() => onSectionClick('skills')} 
+          />
+          <Certifications 
+            certifications={portfolio.certifications} 
+            onViewDetail={() => onSectionClick('certifications')} 
+          />
+          <Interests 
+            interests={portfolio.interests} 
+            onViewDetail={() => onSectionClick('interests')} 
+          />
+          <Learning 
+            learnings={portfolio.learnings} 
+            onViewDetail={() => onSectionClick('learning')} 
+          />
+          <BlogSection 
+            blogs={portfolio.blogs} 
+            onViewDetail={() => onSectionClick('blog')} 
+          />
+          <Traits 
+            traits={portfolio.traits} 
+            onViewDetail={() => onSectionClick('traits')} 
+          />
+          <Projects 
+            projects={portfolio.projects} 
+            onViewDetail={() => onSectionClick('projects')} 
+          />
+          <ContactSection 
+            contacts={portfolio.contacts} 
+            onViewDetail={() => onSectionClick('contact')} 
+          />
+        </main>
 
-      <footer className="portfolio-footer">
-        <p>JAP Portfolio • {portfolio.name} • {new Date().getFullYear()}</p>
-      </footer>
+        <footer className="portfolio-footer">
+          <p>JAP Portfolio • {portfolio.name} • {new Date().getFullYear()}</p>
+        </footer>
+      </div>
     </div>
   );
 };
