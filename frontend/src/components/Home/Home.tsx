@@ -1,8 +1,6 @@
 // src/components/Home/Home.tsx
 import React from 'react';
-import { usePortfolio } from '../Hooks/usePortfolio';
-import { Loading } from '../Utils/Loading';
-import { Error } from '../Utils/Error';
+import { ME } from '../../lib/api';
 import { Navigation } from '../Navigation';
 import { Intro } from '../Sections/Intro';
 import { Specializations } from '../Sections/Specializations';
@@ -16,45 +14,70 @@ import { Projects } from '../Sections/Projects';
 import { ContactSection } from '../Sections/Contact';
 import './Home.css';
 
-export const Home: React.FC = () => {
-  const { portfolio, loading, error, refetch } = usePortfolio();
+interface HomeProps {
+  portfolio: ME;
+  onSectionClick: (section: string) => void;
+}
 
+export const Home: React.FC<HomeProps> = ({ portfolio, onSectionClick }) => {
   const sections = [
-    'Intro',
-    'Specializations',
-    'Skills',
-    'Certifications',
-    'Interests',
-    'Learning',
-    'Blog',
-    'Traits',
-    'Projects',
-    'Contact'
+    { id: 'intro', name: 'Intro' },
+    { id: 'specializations', name: 'Specializations' },
+    { id: 'skills', name: 'Skills' },
+    { id: 'certifications', name: 'Certifications' },
+    { id: 'interests', name: 'Interests' },
+    { id: 'learning', name: 'Learning' },
+    { id: 'blog', name: 'Blog' },
+    { id: 'traits', name: 'Traits' },
+    { id: 'projects', name: 'Projects' },
+    { id: 'contact', name: 'Contact' },
   ];
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error || !portfolio) {
-    return <Error message={error || 'No portfolio data found'} onRetry={refetch} />;
-  }
 
   return (
     <div className="portfolio-container">
-      <Navigation sections={sections} />
+      <Navigation sections={sections} onSectionClick={onSectionClick} />
       
       <main className="portfolio-content">
-        <Intro data={{ name: portfolio.name, bio: portfolio.bio }} />
-        <Specializations specializations={portfolio.specializations} />
-        <Skills skills={portfolio.skills} />
-        <Certifications certifications={portfolio.certifications} />
-        <Interests interests={portfolio.interests} />
-        <Learning learnings={portfolio.learnings} />
-        <BlogSection blogs={portfolio.blogs} />
-        <Traits traits={portfolio.traits} />
-        <Projects projects={portfolio.projects} />
-        <ContactSection contacts={portfolio.contacts} />
+        <Intro 
+          data={{ name: portfolio.name, bio: portfolio.bio }} 
+          onViewDetail={() => onSectionClick('intro')} 
+        />
+        <Specializations 
+          specializations={portfolio.specializations} 
+          onViewDetail={() => onSectionClick('specializations')} 
+        />
+        <Skills 
+          skills={portfolio.skills} 
+          onViewDetail={() => onSectionClick('skills')} 
+        />
+        <Certifications 
+          certifications={portfolio.certifications} 
+          onViewDetail={() => onSectionClick('certifications')} 
+        />
+        <Interests 
+          interests={portfolio.interests} 
+          onViewDetail={() => onSectionClick('interests')} 
+        />
+        <Learning 
+          learnings={portfolio.learnings} 
+          onViewDetail={() => onSectionClick('learning')} 
+        />
+        <BlogSection 
+          blogs={portfolio.blogs} 
+          onViewDetail={() => onSectionClick('blog')} 
+        />
+        <Traits 
+          traits={portfolio.traits} 
+          onViewDetail={() => onSectionClick('traits')} 
+        />
+        <Projects 
+          projects={portfolio.projects} 
+          onViewDetail={() => onSectionClick('projects')} 
+        />
+        <ContactSection 
+          contacts={portfolio.contacts} 
+          onViewDetail={() => onSectionClick('contact')} 
+        />
       </main>
 
       <footer className="portfolio-footer">

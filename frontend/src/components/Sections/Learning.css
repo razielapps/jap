@@ -1,14 +1,55 @@
-/* src/components/Sections/Learning.css */
-.learning-section {
-  padding: 3rem 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
+/* Add to src/components/Sections/Learning.css */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.learning-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.view-detail-button {
+  padding: 0.5rem 1rem;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.view-detail-button:hover {
+  background: #2c5282;
+}
+
+.section-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.view-more-button {
+  background: none;
+  border: none;
+  color: #3182ce;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.view-more-button:hover {
+  background: #ebf8ff;
+  text-decoration: underline;
+}
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .learning-item {
@@ -16,73 +57,16 @@
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.learning-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.learning-name {
-  font-size: 1.3rem;
-  color: #2d3748;
-  margin: 0;
-}
-
-.learning-progress {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.progress-text {
-  font-weight: 600;
-  color: #2d3748;
-  min-width: 40px;
-}
-
-.progress-bar {
-  width: 200px;
-  height: 8px;
-  background: #edf2f7;
-  border-radius: 4px;
-  overflow: hidden;
+.learning-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
   height: 100%;
   background: #48bb78;
   transition: width 0.3s ease;
-}
-
-.learning-dates {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.date-item {
-  font-size: 0.9rem;
-  color: #718096;
-}
-
-.date-item strong {
-  color: #2d3748;
-}
-
-.learning-why h4 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #4a5568;
-}
-
-.learning-why p {
-  margin: 0;
-  line-height: 1.5;
-  color: #718096;
 }

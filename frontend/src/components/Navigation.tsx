@@ -3,19 +3,25 @@ import React from 'react';
 import './Navigation.css';
 
 interface NavigationProps {
-  sections: string[];
+  sections: Array<{ id: string; name: string }>;
+  onSectionClick: (section: string) => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ sections }) => (
+export const Navigation: React.FC<NavigationProps> = ({ sections, onSectionClick }) => (
   <nav className="navigation">
     <div className="nav-container">
-      <a href="#intro" className="nav-logo">JAP</a>
+      <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        JAP
+      </span>
       <ul className="nav-links">
         {sections.map((section) => (
-          <li key={section}>
-            <a href={`#${section.toLowerCase()}`} className="nav-link">
-              {section}
-            </a>
+          <li key={section.id}>
+            <button 
+              onClick={() => onSectionClick(section.id)}
+              className="nav-link"
+            >
+              {section.name}
+            </button>
           </li>
         ))}
       </ul>

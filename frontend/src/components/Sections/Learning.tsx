@@ -5,15 +5,25 @@ import './Learning.css';
 
 interface LearningProps {
   learnings: Learning[];
+  onViewDetail?: () => void;
 }
 
-export const Learning: React.FC<LearningProps> = ({ learnings }) => (
-  <section className="learning-section" id="learning">
-    <h2 className="section-title">Currently Learning</h2>
-    <div className="learning-list">
-      {learnings
-        .filter(learning => learning.is_active)
-        .map((learning) => (
+export const Learning: React.FC<LearningProps> = ({ learnings, onViewDetail }) => {
+  const activeLearnings = learnings.filter(learning => learning.is_active);
+
+  return (
+    <section className="learning-section" id="learning">
+      <div className="section-header">
+        <h2 className="section-title">Currently Learning</h2>
+        {onViewDetail && (
+          <button onClick={onViewDetail} className="view-detail-button">
+            View Learning Journey →
+          </button>
+        )}
+      </div>
+      
+      <div className="learning-list">
+        {activeLearnings.slice(0, 2).map((learning) => (
           <div key={learning.id} className="learning-item">
             <div className="learning-header">
               <h3 className="learning-name">{learning.name}</h3>
@@ -40,11 +50,20 @@ export const Learning: React.FC<LearningProps> = ({ learnings }) => (
               
               <div className="learning-why">
                 <h4>Why I'm Learning This</h4>
-                <p>{learning.why}</p>
+                <p className="truncate-text">{learning.why}</p>
               </div>
             </div>
           </div>
         ))}
-    </div>
-  </section>
-);
+      </div>
+      
+      {(activeLearnings.length > 2 || learnings.length > activeLearnings.length) && onViewDetail && (
+        <div className="section-footer">
+          <button onClick={onViewDetail} className="view-more-button">
+            {activeLearnings.length > 2 ? `View all ${activeLearnings.length} active learnings` : 'View completed learnings'} →
+          </button>
+        </div>
+      )}
+    </section>
+  );
+};

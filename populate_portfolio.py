@@ -5,10 +5,10 @@ import sys
 
 # Add the project to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jap_backend.settings')
 django.setup()
 
-from portfolio.models import (
+from api.models import (
     ME, Specialization, Skill, Certification, Interest,
     Learning, Blog, Project, Contact, ProfessionalTrait
 )

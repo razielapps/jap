@@ -112,6 +112,11 @@ export interface ProfessionalTrait {
   icon?: string;
 }
 
+
+
+
+
+
 // API Functions
 export const portfolioAPI = {
   // Get complete portfolio data

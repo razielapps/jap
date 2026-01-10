@@ -5,13 +5,21 @@ import './Blog.css';
 
 interface BlogProps {
   blogs: Blog[];
+  onViewDetail?: () => void;
 }
 
-export const BlogSection: React.FC<BlogProps> = ({ blogs }) => (
+export const BlogSection: React.FC<BlogProps> = ({ blogs, onViewDetail }) => (
   <section className="blog-section" id="blog">
-    <h2 className="section-title">Blog & Writings</h2>
+    <div className="section-header">
+      <h2 className="section-title">Blog & Writings</h2>
+      {onViewDetail && (
+        <button onClick={onViewDetail} className="view-detail-button">
+          View All Posts →
+        </button>
+      )}
+    </div>
     <div className="blog-list">
-      {blogs.map((blog) => (
+      {blogs.slice(0, 2).map((blog) => (
         <div key={blog.id} className="blog-card">
           <h3 className="blog-title">{blog.title}</h3>
           
@@ -39,5 +47,13 @@ export const BlogSection: React.FC<BlogProps> = ({ blogs }) => (
         </div>
       ))}
     </div>
+    
+    {blogs.length > 2 && onViewDetail && (
+      <div className="section-footer">
+        <button onClick={onViewDetail} className="view-more-button">
+          View all {blogs.length} blog posts →
+        </button>
+      </div>
+    )}
   </section>
 );

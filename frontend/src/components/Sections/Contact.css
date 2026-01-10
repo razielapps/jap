@@ -1,13 +1,58 @@
-/* src/components/Sections/Contact.css */
-.contact-section {
-  padding: 3rem 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
+/* Add to src/components/Sections/Contact.css */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.contact-grid {
-  display: grid;
-  gap: 1rem;
+.view-detail-button {
+  padding: 0.5rem 1rem;
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.view-detail-button:hover {
+  background: #2f855a;
+}
+
+.section-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.view-more-button {
+  background: none;
+  border: none;
+  color: #38a169;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.view-more-button:hover {
+  background: #f0fff4;
+  text-decoration: underline;
+}
+
+.contact-label {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(56, 161, 105, 0.1);
+  color: #38a169;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .contact-card {
@@ -28,29 +73,6 @@
 }
 
 .contact-card.primary-contact {
-  border-color: #4299e1;
-  background: #ebf8ff;
-}
-
-.contact-platform {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.contact-icon {
-  font-size: 2rem;
-}
-
-.contact-platform-name {
-  font-size: 1.2rem;
-  margin: 0;
-  color: #2d3748;
-}
-
-.contact-username {
-  margin: 0;
-  color: #718096;
-  font-size: 0.95rem;
+  border-color: #38a169;
+  background: #f0fff4;
 }

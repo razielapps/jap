@@ -1,22 +1,37 @@
-/* src/components/Sections/Intro.css */
-.intro-section {
-  padding: 3rem 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.intro-name {
-  font-size: 2.5rem;
+/* Add to src/components/Sections/Intro.css if not already present */
+.intro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1.5rem;
-  color: #2d3748;
 }
 
-.intro-bio p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  color: #4a5568;
+.view-detail-button {
+  padding: 0.5rem 1rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
 }
 
-.intro-bio p:last-child {
-  margin-bottom: 0;
+.view-detail-button:hover {
+  background: #3182ce;
+}
+
+.read-more-button {
+  display: block;
+  background: none;
+  border: none;
+  color: #4299e1;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+
+.read-more-button:hover {
+  text-decoration: underline;
 }
