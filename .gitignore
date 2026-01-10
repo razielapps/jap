@@ -34,3 +34,5 @@ coverage.xml
 *.njsproj
 *.sln
 *.sw?
+populate_portfolio.py
+*populate_portfolio.py
