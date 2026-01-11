@@ -1,2 +1,4 @@
 - Convert to multiple-user portfolio system
 - Improve UI/UX on frontend
+- Improve End-to-End security
+- Perform ZeroTrust Scan on Frontend & Backend
